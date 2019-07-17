@@ -1,0 +1,55 @@
+Metadata-Version: 1.1
+Name: django-samuelamujoscrumy
+Version: 0.1
+Summary: A simple Django app to conduct Web-based polls.
+Home-page: https://www.example.com/
+Author: Amujo Dotun
+Author-email: samuelamujo@gmail.com
+License: BSD License
+Description: # samuelamujoscrumy
+        
+        samuelamujoscrumy is a django application which happen to be my first django application, and LinuxJobeer is eqiping me with this skills by providing neccessary material needed for free.
+        
+        
+        
+        =====
+        samuelamujoscrumy
+        =====
+        
+        samuelamujoscrumy is a simple Django app to conduct Web-based samuelamujoscrumy. For each
+        question, visitors can choose between a fixed number of answers.
+        
+        Detailed documentation is in the "docs" directory.
+        
+        Quick start
+        -----------
+        
+        1. Add "samuelamujoscrumy" to your INSTALLED_APPS setting like this::
+        
+            INSTALLED_APPS = [
+                ...
+                'samuelamujoscrumy',
+            ]
+        
+        2. Include the samuelamujoscrumy URLconf in your project urls.py like this::
+        
+            path('samuelamujoscrumy/', include('samuelamujoscrumy.urls')),
+        
+        3. Run `python manage.py migrate` to create the samuelamujoscrumy models.
+        
+        4. Start the development server and visit http://127.0.0.1:8000/admin/
+           to create a poll (you'll need the Admin app enabled).
+        
+        5. Visit http://127.0.0.1:8000/samuelamujoscrumy/ to participate in the poll.
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: X.Y
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content

@@ -1,0 +1,15 @@
+MANIFEST.in
+README.rst
+setup.py
+django_samuelamujoscrumy.egg-info/PKG-INFO
+django_samuelamujoscrumy.egg-info/SOURCES.txt
+django_samuelamujoscrumy.egg-info/dependency_links.txt
+django_samuelamujoscrumy.egg-info/top_level.txt
+samuelamujoscrumy/__init__.py
+samuelamujoscrumy/admin.py
+samuelamujoscrumy/apps.py
+samuelamujoscrumy/models.py
+samuelamujoscrumy/tests.py
+samuelamujoscrumy/urls.py
+samuelamujoscrumy/views.py
+samuelamujoscrumy/migrations/__init__.py
