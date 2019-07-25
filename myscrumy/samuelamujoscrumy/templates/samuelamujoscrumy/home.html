@@ -19,36 +19,70 @@
   {% endfor %}
   
 
-        <table style="width:100%">
-        {% for user in user %}
-        <tr>
+
+      <table>
+    <tr>
+        <th>User</th>
+        {% for every in status %}
+        <th width="200">{{every.status_name}}</th>
         {% endfor %}
-          <th>User</th>
-          <th>Weekly Goals</th> 
-          <th>Daily Goals</th>
-          <th>Verify Goals</th>
-          <th>Done Goals</th>
-        </tr>
-         
-          {% for user in user %}
-        <tr>
+    </tr>
+    <tr>
+        <th>First name</th>
+        {% for every in status %}
+        <th>Goal name - Goal id</th>
         {% endfor %}
-          <th>Firstname</th>
-          <th> Goals Name</th> 
-          <th> Goals Id</th>
+    </tr>
+{% for user in users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            {% with user=user %}
+            <td>
+              {% for a in goal_stats %}
+                  {% if a.user == user %}
+                      {{ a.goal_name }} - {{ a.goal_id }}
+                      {% if not forloop.last %}
+                          <br>
+                      {% endif %}
+                  {% endif %}
+              {% endfor %}
+            </td>
+
+            <td>
+              {% for b in goal_stats1 %}
+                  {% if b.user == user %}
+                      {{ b.goal_name }} - {{ b.goal_id }}
+                      {% if not forloop.last %}
+                          <br>
+                      {% endif %}
+                  {% endif %}
+              {% endfor %}
+            </td>
+            <td>
+              {% for c in goal_stats2 %}
+                  {% if c.user == user %}
+                      {{ c.goal_name }} - {{ c.goal_id }}
+                      {% if not forloop.last %}
+                          <br>
+                      {% endif %}
+                  {% endif %}
+              {% endfor %}
+            </td>
+            <td>
+              {% for d in goal_stats3 %}
+                  {% if d.user == user %}
+                      {{ d.goal_name }} - {{ d.goal_id }}
+                      {% if not forloop.last %}
+                          <br>
+                      {% endif %}
+                  {% endif %}
+              {% endfor %}
+            </td>
+            {% endwith %}
         </tr>
-          {% for user in user %}
-          <tr>
-          
-            <td>{{ user.owner }}</td>
-            <td>{{ user.goal_name }}</td>
-            <td>{{ user.goal_id }}</td>  
-            <td>{{ user.goal_status }}</td>
-            
-          </tr>
-          {% endfor %}
-          
-      </table> 
+    {% endfor %}
+
+</table>
 
 
   </body>
