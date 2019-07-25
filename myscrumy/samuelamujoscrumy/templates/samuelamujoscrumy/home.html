@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <title>Django-App</title>
+      <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;    
+        }
+    </style>
+  </head>
+  <body>
+  
+  {% for scrumy_goal in scrumy_goal %}
+   <h1>{{scrumy_goal }} </h1>
+  {% endfor %}
+  
+
+        <table style="width:100%">
+        {% for user in user %}
+        <tr>
+        {% endfor %}
+          <th>User</th>
+          <th>Weekly Goals</th> 
+          <th>Daily Goals</th>
+          <th>Verify Goals</th>
+          <th>Done Goals</th>
+        </tr>
+         
+          {% for user in user %}
+        <tr>
+        {% endfor %}
+          <th>Firstname</th>
+          <th> Goals Name</th> 
+          <th> Goals Id</th>
+        </tr>
+          {% for user in user %}
+          <tr>
+          
+            <td>{{ user.owner }}</td>
+            <td>{{ user.goal_name }}</td>
+            <td>{{ user.goal_id }}</td>  
+            <td>{{ user.goal_status }}</td>
+            
+          </tr>
+          {% endfor %}
+          
+      </table> 
+
+
+  </body>
+
+</html>
+
+
+ 

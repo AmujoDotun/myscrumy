@@ -29,7 +29,7 @@ def move_goal(request,goal_id):
         goal = ScrumyGoals.objects.get(goal_id = goal_id)
         return HttpResponse(goal.goal_name)
     except ScrumyGoals.DoesNotExist:
-        return HttpResponse('Whatsup....!!! Sorry what you are looking for doesn\'t exist')
+        return render(request, 'samuelamujoscrumy/exception.html')
 
 
 
@@ -45,6 +45,22 @@ def add_goal(request):
     return HttpResponse('OK')
 
 def home(request):
+    User =get_user_model()
+    goal_stats = GoalStatus.objects.get(status_name="Weekly Goal")
+    
+    user = User.objects.get(id=1)
+
     scrumy_goal = ScrumyGoals.objects.filter(goal_name="Keep Learning Django")
 
-    return HttpResponse(scrumy_goal)
+    
+    user = ScrumyGoals.objects.all()
+
+    return render(request, 'samuelamujoscrumy/home.html', {'user': user, 'scrumy_goal': scrumy_goal})
+
+
+# def exception(request,goal_id):
+#     try:
+#         goal = ScrumyGoals.objects.get(goal_id = goal_id)
+#         return HttpResponse(goal.goal_name)
+#     except ScrumyGoals.DoesNotExist:
+#         return render(request, 'samuelamujoscrumy/exception.html')
