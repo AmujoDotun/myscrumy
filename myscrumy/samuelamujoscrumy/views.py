@@ -14,7 +14,8 @@ kwargs = {
 def index(request) :
     goal_name=ScrumyGoals.objects.filter(**kwargs)
     # return HttpResponse(ScrumyGoals.objects.filter(goal_name ="Learn Django"))
-    return HttpResponse(goal_name)
+    # return HttpResponse(goal_name)
+    return render(request, 'samuelamujoscrumy/index.html')
     # context = {
     #     'kwargs': ScrumyGoals.objects.filter(**kwargs)
     # }
