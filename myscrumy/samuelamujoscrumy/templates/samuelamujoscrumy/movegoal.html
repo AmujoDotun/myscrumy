@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Move Goal</title>
+</head>
+<body>
+    <div class="container">
+        <h3 class="text-center">You're Currently Logged in as {{ user }}</h3>
+        <div class="row">
+            <div class="col-md-4" style="margin:100px auto;">
+                <form method="post">
+                    {% csrf_token %}
+                    <label class="control-label">Goal Status</label>
+                    <select class="form-control" name="goal_stats">
+                        {% if goal == "Weekly Goal" %}
+                        <option>Weekly Goal</option>
+                        <option>Daily Goal</option>
+                        <option>Verify Goal</option>
+                        {% if isDev != "True" %}
+                        <option>Done Goal</option>
+                        {% endif %}
+                        {% elif goal == "Daily Goal" %}
+                        <option>Daily Goal</option>
+                        <option>Weekly Goal</option>
+                        <option>Verify Goal</option>
+                        {% if isDev != "True" %}
+                        <option>Done Goal</option>
+                        {% endif %}
+                        {% elif goal == "Verify Goal" %}
+                        <option>Verify Goal</option>
+                        <option>Daily Goal</option>
+                        <option>Weekly Goal</option>
+                        {% if isDev != "True" %}
+                        <option>Done Goal</option>
+                        {% endif %}
+                        {% elif goal == "Done Goal" %}
+                        {% if isDev != "True" %}
+                        <option>Done Goal</option>
+                        {% endif %}
+                        <option>Weekly Goal</option>
+                        <option>Daily Goal</option>
+                        <option>Verify Goal</option>
+                        {% endif %}
+                    </select>
+                    <button type="submit" class="form-control btn btn-info mt-5">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,3 @@
-Welcome Louis, I hope this make you smile and give me my 1 mark 🤠
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +5,32 @@ Welcome Louis, I hope this make you smile and give me my 1 mark 🤠
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Sign Up</title>
+    <title>Add Goal</title>
 </head>
 <body>
     <div class="container">
+            <h3 class="text-center mt-5">You're Currently Logged in as {{ user }}</h3>
         <div class="row">
+            
             <div class="col-md-4" style="margin:100px auto;">
+                
+                {% if GoalStatusErr %}
+                    <div class="alert alert-warning">You can't add Weekly Goal for a user other than {{ GoalStatusErr }}</div>
+                {% endif %}
                 {% if form.errors %}
                     <div class="alert alert-danger">{{ form.errors }}</div>
                 {% endif %}
                 <form method="POST" class="post-form">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="form-control btn btn-info">Sign Up</button>
+                    {% if userIsDeveloper == "True" %}
+                    <label>Goal Status:</label>
+                    <select class="form-control" name="goal_status">
+                        <option>-------</option>
+                        <option>Weekly Goal</option>
+                    </select>
+                    {% endif %}
+                    <button type="submit" class="form-control btn btn-info mt-3">Add Goal</button>
                 </form>
             </div>
         </div>

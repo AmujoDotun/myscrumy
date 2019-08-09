@@ -1,4 +1,4 @@
-<html>
+{% comment %} <html>
   <head>
     <title>Django-App</title>
       <style>
@@ -19,36 +19,7 @@
   {% endfor %}
   
 
-        {% comment %} <table style="width:100%">
-        {% for user in user %}
-        <tr>
-        {% endfor %}
-          <th>User</th>
-          <th>Weekly Goals</th> 
-          <th>Daily Goals</th>
-          <th>Verify Goals</th>
-          <th>Done Goals</th>
-        </tr>
-         
-          {% for user in user %}
-        <tr>
-        {% endfor %}
-          <th>Firstname</th>
-          <th> Goals Name</th> 
-          <th> Goals Id</th>
-        </tr>
-          {% for user in user %}
-          <tr>
-          
-            <td>{{ user.owner }}</td>
-            <td>{{ user.goal_name }}</td>
-            <td>{{ user.goal_id }}</td>  
-            <td>{{ user.goal_status }}</td>
-            
-          </tr>
-          {% endfor %}
-          
-      </table>  {% endcomment %}
+    
 
       <table>
     <tr>
@@ -118,6 +89,80 @@
   </body>
 
 </html>
-
+ {% endcomment %}
 
  
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <div class="alert {% if message.tags %} alert-{{ message.tags  }} {% endif %}">{{ message }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="row mt-5">
+            <div class="col-md-6 mb-5"><h3>You're Currently Logged in as {{ user }} </h3></div>
+            <div class="col-md-6 text-right text-white mb-3">
+                <a class="btn btn-info" href="{% url 'addgoal' %}">Add Goal</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Weekly Goals</th>
+                        <th>Daily Goals</th>
+                        <th>Verify Goals</th>
+                        <th>Done Goals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        
+                    {% for data in datas %}
+                    <tr>
+                        <td>{{ data.users }}</td>
+                        
+                        <td>
+                            {% for wg_column in data.w_g %}
+                                Goal Name:<a href="movegoal/{{ wg_column.goal_id }}">{{ wg_column.goal_name }}</a><br>Goal ID:{{ wg_column.goal_id }}<br>Goal Status:{{ wg_column.goal_status }}<br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for dg_column in data.d_g %}
+                                Goal Name:<a href="movegoal/{{ dg_column.goal_id }}">{{ dg_column.goal_name }}</a><br>Goal ID:{{ dg_column.goal_id }}<br>Goal Status:{{ dg_column.goal_status }}<br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for vg_column in data.v_g %}
+                                Goal Name:<a href="movegoal/{{ vg_column.goal_id }}">{{ vg_column.goal_name }}</a><br>Goal ID:{{ vg_column.goal_id }}<br>Goal Status:{{ vg_column.goal_status }}<br>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doneg_column in data.dn_g %}
+                                Goal Name:<a href="movegoal/{{ doneg_column.goal_id }}">{{ doneg_column.goal_name }}</a><br>Goal ID:{{ doneg_column.goal_id }}<br>Goal Status:{{ doneg_column.goal_status }}
+                            {% endfor %}
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</body>
+</html>

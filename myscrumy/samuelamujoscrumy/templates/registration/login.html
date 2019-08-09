@@ -1,4 +1,4 @@
-
+{% comment %} 
 
 
  <!DOCTYPE html>
@@ -102,4 +102,53 @@ span.psw {
 </form>
 
 </body>
-</html> 
+</html>  {% endcomment %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6" style="margin:100px auto;">
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                             <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                        {% endfor %}
+                    {% else %}
+                         <h3 class="mb-5"> Welcome Louis. This page is for you to have access to goodies 🤠</h3>   
+                    {% endif %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger">{{ form.errors }}</div>
+                    {% endif %}
+                <form action="" method="post" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="Enter Username" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Enter Password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="form-control btn btn-success" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
